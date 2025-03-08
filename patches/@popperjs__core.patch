@@ -1,0 +1,17 @@
+diff --git a/lib/modifiers/computeStyles.js b/lib/modifiers/computeStyles.js
+index 2ebb026d5aec37822c9a24e30964f3931fc745ee..4a3eb8119a2517b5adf32fec53ba54fdd52e9d1f 100644
+--- a/lib/modifiers/computeStyles.js
++++ b/lib/modifiers/computeStyles.js
+@@ -126,7 +126,11 @@ function computeStyles(_ref5) {
+       _options$adaptive = options.adaptive,
+       adaptive = _options$adaptive === void 0 ? true : _options$adaptive,
+       _options$roundOffsets = options.roundOffsets,
+-      roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
++    roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
++  var zoom = document.body.style.zoom || 1
++  console.log('zoom: ', zoom);
++  state.rects.popper.x = state.rects.popper.x / zoom;
++  state.rects.popper.y = state.rects.popper.y / zoom;
+   var commonStyles = {
+     placement: getBasePlacement(state.placement),
+     variation: getVariation(state.placement),

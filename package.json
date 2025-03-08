@@ -1,0 +1,26 @@
+{
+  "name": "element-plus-patched",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "element-plus": "^2.4.2",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.2.0"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@popperjs/core": "patches/@popperjs__core.patch",
+      "element-plus": "patches/element-plus.patch"
+    }
+  }
+}
