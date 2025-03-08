@@ -1,17 +1,75 @@
-diff --git a/lib/modifiers/computeStyles.js b/lib/modifiers/computeStyles.js
-index 2ebb026d5aec37822c9a24e30964f3931fc745ee..4a3eb8119a2517b5adf32fec53ba54fdd52e9d1f 100644
---- a/lib/modifiers/computeStyles.js
-+++ b/lib/modifiers/computeStyles.js
-@@ -126,7 +126,11 @@ function computeStyles(_ref5) {
-       _options$adaptive = options.adaptive,
-       adaptive = _options$adaptive === void 0 ? true : _options$adaptive,
-       _options$roundOffsets = options.roundOffsets,
--      roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
-+    roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
-+  var zoom = document.body.style.zoom || 1
-+  console.log('zoom: ', zoom);
-+  state.rects.popper.x = state.rects.popper.x / zoom;
-+  state.rects.popper.y = state.rects.popper.y / zoom;
-   var commonStyles = {
-     placement: getBasePlacement(state.placement),
-     variation: getVariation(state.placement),
+diff --git a/dist/cjs/popper.js b/dist/cjs/popper.js
+index 9f6f4f0a44b4cd740f35301cfb8a2702a636727e..293754c6b1bd0e40de4c653700d0863b7c4495f6 100644
+--- a/dist/cjs/popper.js
++++ b/dist/cjs/popper.js
+@@ -3,7 +3,6 @@
+  */
+ 
+ 'use strict';
+-
+ Object.defineProperty(exports, '__esModule', { value: true });
+ 
+ function getWindow(node) {
+diff --git a/dist/esm/index.js b/dist/esm/index.js
+index c0c8b52db9f339e17fbf68c8e2aa36862776fe0a..b190aecb47be69087653672f76562d02246d2246 100644
+--- a/dist/esm/index.js
++++ b/dist/esm/index.js
+@@ -4,5 +4,4 @@ export * from "./modifiers/index.js"; // eslint-disable-next-line import/no-unus
+ export { popperGenerator, detectOverflow, createPopper as createPopperBase } from "./createPopper.js"; // eslint-disable-next-line import/no-unused-modules
+ 
+ export { createPopper } from "./popper.js"; // eslint-disable-next-line import/no-unused-modules
+-
+ export { createPopper as createPopperLite } from "./popper-lite.js";
+\ No newline at end of file
+diff --git a/dist/umd/popper.js b/dist/umd/popper.js
+index a00f13995f6ec9133ddfbd98a01427bff11956b4..eefe23f3f21e6b5ac38cb385915c5a335dda250f 100644
+--- a/dist/umd/popper.js
++++ b/dist/umd/popper.js
+@@ -1,7 +1,6 @@
+ /**
+  * @popperjs/core v2.11.8 - MIT License
+  */
+-
+ (function (global, factory) {
+   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+   typeof define === 'function' && define.amd ? define(['exports'], factory) :
+diff --git a/lib/createPopper.js b/lib/createPopper.js
+index 2af3ce336dd60d3f7c8bcc7aeb4abd44a2da80ed..7ad97f6c170f4825941e440b89fdea4898852337 100644
+--- a/lib/createPopper.js
++++ b/lib/createPopper.js
+@@ -7,6 +7,7 @@ import debounce from "./utils/debounce.js";
+ import mergeByName from "./utils/mergeByName.js";
+ import detectOverflow from "./utils/detectOverflow.js";
+ import { isElement } from "./dom-utils/instanceOf.js";
++console.log('isElement: ', isElement);
+ var DEFAULT_OPTIONS = {
+   placement: 'bottom',
+   modifiers: [],
+diff --git a/lib/dom-utils/getBoundingClientRect.js b/lib/dom-utils/getBoundingClientRect.js
+index fa065a21108c5fa4be795997184832dc36ff6696..51cc2601f45f44f2154b0124fc4aaccaab7ec7df 100644
+--- a/lib/dom-utils/getBoundingClientRect.js
++++ b/lib/dom-utils/getBoundingClientRect.js
+@@ -14,7 +14,10 @@ export default function getBoundingClientRect(element, includeScale, isFixedStra
+   var clientRect = element.getBoundingClientRect();
+   var scaleX = 1;
+   var scaleY = 1;
+-
++  const bodyScale = document.body.style.zoom || 1;
++  console.log('bodyScale: ', bodyScale);
++  scaleX = scaleX * bodyScale;
++  scaleY = scaleY * bodyScale;
+   if (includeScale && isHTMLElement(element)) {
+     scaleX = element.offsetWidth > 0 ? round(clientRect.width) / element.offsetWidth || 1 : 1;
+     scaleY = element.offsetHeight > 0 ? round(clientRect.height) / element.offsetHeight || 1 : 1;
+diff --git a/lib/index.js b/lib/index.js
+index c0c8b52db9f339e17fbf68c8e2aa36862776fe0a..394d0a02192bd08dcc387ed6c1ee88ebc3bf324d 100644
+--- a/lib/index.js
++++ b/lib/index.js
+@@ -1,6 +1,6 @@
+ export * from "./enums.js";
+ export * from "./modifiers/index.js"; // eslint-disable-next-line import/no-unused-modules
+-
++console.log('core/index.js');
+ export { popperGenerator, detectOverflow, createPopper as createPopperBase } from "./createPopper.js"; // eslint-disable-next-line import/no-unused-modules
+ 
+ export { createPopper } from "./popper.js"; // eslint-disable-next-line import/no-unused-modules

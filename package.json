@@ -9,18 +9,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "element-plus": "^2.4.2",
+    "@popperjs/core": "2.11.8",
+    "element-plus": "^2.4.3",
     "vue": "^3.5.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
     "vite": "^6.2.0"
   },
+  "overrides": {
+    "npm:@sxzz/popperjs-es@^2.11.7": "@popperjs/core"
+  },
   "pnpm": {
     "patchedDependencies": {
-      "@popperjs/core": "patches/@popperjs__core.patch",
-      "element-plus": "patches/element-plus.patch"
+      "@popperjs/core": "patches/@popperjs__core.patch"
     }
   }
 }

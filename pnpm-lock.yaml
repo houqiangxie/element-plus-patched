@@ -6,22 +6,19 @@ settings:
 
 patchedDependencies:
   '@popperjs/core':
-    hash: 96c7d2e10fd6d0f124a7332913281ccb81e61a0644623d19f496c85c9df9142c
+    hash: 07e1f9fba6d1f16629642ff50306761ccc08aa6550733309dda8247eb78ad5f3
     path: patches/@popperjs__core.patch
-  element-plus:
-    hash: 1c3730394e9de32ff62a3162b162b3551e88cc83f9d1610774be421350abcddc
-    path: patches/element-plus.patch
 
 importers:
 
   .:
     dependencies:
       '@popperjs/core':
-        specifier: ^2.11.8
-        version: 2.11.8(patch_hash=96c7d2e10fd6d0f124a7332913281ccb81e61a0644623d19f496c85c9df9142c)
+        specifier: 2.11.8
+        version: 2.11.8(patch_hash=07e1f9fba6d1f16629642ff50306761ccc08aa6550733309dda8247eb78ad5f3)
       element-plus:
-        specifier: ^2.4.2
-        version: 2.4.2(patch_hash=1c3730394e9de32ff62a3162b162b3551e88cc83f9d1610774be421350abcddc)(vue@3.5.13)
+        specifier: ^2.4.3
+        version: 2.4.3(vue@3.5.13)
       vue:
         specifier: ^3.5.13
         version: 3.5.13
@@ -390,8 +387,8 @@ packages:
   dayjs@1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
 
-  element-plus@2.4.2:
-    resolution: {integrity: sha512-E/HwXX7JF1LPvQSjs0fZ8WblIoc0quoXsRXQZiL7QDq7xJdNGSUaXtdk7xiEv7axPmLfEFtxE5du9fFspDrmJw==}
+  element-plus@2.4.3:
+    resolution: {integrity: sha512-b3q26j+lM4SBqiyzw8HybybGnP2pk4MWgrnzzzYW5qKQUgV6EG1Zg7nMCfgCVccI8tNvZoTiUHb2mFaiB9qT8w==}
     peerDependencies:
       vue: ^3.2.0
 
@@ -626,7 +623,7 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
-  '@popperjs/core@2.11.8(patch_hash=96c7d2e10fd6d0f124a7332913281ccb81e61a0644623d19f496c85c9df9142c)': {}
+  '@popperjs/core@2.11.8(patch_hash=07e1f9fba6d1f16629642ff50306761ccc08aa6550733309dda8247eb78ad5f3)': {}
 
   '@rollup/rollup-android-arm-eabi@4.34.9':
     optional: true
@@ -781,7 +778,7 @@ snapshots:
 
   dayjs@1.11.13: {}
 
-  element-plus@2.4.2(patch_hash=1c3730394e9de32ff62a3162b162b3551e88cc83f9d1610774be421350abcddc)(vue@3.5.13):
+  element-plus@2.4.3(vue@3.5.13):
     dependencies:
       '@ctrl/tinycolor': 3.6.1
       '@element-plus/icons-vue': 2.3.1(vue@3.5.13)
